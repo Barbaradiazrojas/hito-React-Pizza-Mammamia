@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -17,19 +16,6 @@ const App = () => {
       </div>
       <Footer />
     </div>
-=======
-import Footer from './assets/components/Footer';
-import Home from './assets/components/Home';
-import Navbar from './assets/components/Navbar';
-
-const App = () => {
-  return (
-    <>
-      <Navbar/>
-      <Home/>
-      <Footer/>
-    </>
->>>>>>> 0487f857a9cca322e0c4bc84b08019c8619fd740
   );
 };
 
