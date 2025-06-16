@@ -7,19 +7,19 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <button className="btn btn-primary">🍕 Home</button>
+        <a className="btn btn-dark" href="/">🍕 Home</a>
         {token ? (
           <>
-            <button className="btn btn-primary">🔓 Profile</button>
-            <button className="btn btn-primary">🔒 Logout</button>
+            <a className="btn btn-dark" href="/profile">🔓 Profile</a>
+            <button className="btn btn-dark" onClick={() => console.log('Logout')}>🔒 Logout</button>
           </>
         ) : (
           <>
-            <button className="btn btn-primary">🔐 Login</button>
-            <button className="btn btn-primary">🔐 Register</button>
+            <a className="btn btn-dark" href="/login">🔐 Login</a>
+            <a className="btn btn-dark" href="/register">🔐 Register</a>
           </>
         )}
-        <button className="btn btn-primary">🛒 Total: ${total.toLocaleString()}</button>
+        <a className="btn btn-dark" href="/cart">🛒 Total: ${total.toLocaleString()}</a>
       </div>
     </nav>
   );

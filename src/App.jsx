@@ -1,19 +1,20 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Register from './components/Register';
-import Login from './components/Login';
-import './index.css'; // Estilos globales
+import Home from './components/Home';
+import Cart from './components/Cart';
+//import Login from './components/Login';
+//import Register from './components/Register';
 import './main.css'; // Estilos específicos
 
 const App = () => {
   return (
-    <div className="container">
+    <div>
       <Navbar />
-      <div className="form-container">
-        <Register />
-        {/* <Login /> */}
-      </div>
+        <Home />
+       {/* <Register /> */}
+      {/* <Login /> */}
+      <Cart />
       <Footer />
     </div>
   );
