@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../main.css';
+import '../main.css'; // Asegúrate de importar el archivo CSS correspondiente
 
 const Cardpizza = ({ name, price, ingredients, img, desc }) => {
   return (
