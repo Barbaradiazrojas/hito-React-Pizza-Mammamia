@@ -1,28 +1,18 @@
-import React, { useState } from 'react';
-import { pizzaCart } from './pizzas';
+import React, { useContext } from 'react';
+import { CartContext } from '../components/CartContext'; // Asegúrate de que la ruta sea correcta
 
 const Cart = () => {
-  const [cart, setCart] = useState(pizzaCart);
+  const { cart, addToCart, removeFromCart, calculateTotal } = useContext(CartContext);
 
-  const increaseQuantity = (id) => {
-    setCart(currentCart =>
-      currentCart.map(pizza =>
-        pizza.id === id ? { ...pizza, quantity: pizza.quantity + 1 } : pizza
-      )
-    );
+  const increaseQuantity = (pizza) => {
+    addToCart(pizza);
   };
 
   const decreaseQuantity = (id) => {
-    setCart(currentCart =>
-      currentCart
-        .map(pizza =>
-          pizza.id === id ? { ...pizza, quantity: Math.max(pizza.quantity - 1, 0) } : pizza
-        )
-        .filter(pizza => pizza.quantity > 0)
-    );
+    removeFromCart(id);
   };
 
-  const total = cart.reduce((sum, pizza) => sum + pizza.price * pizza.quantity, 0);
+  const total = calculateTotal();
 
   return (
     <div className="cart-container">
@@ -37,8 +27,8 @@ const Cart = () => {
               <p>Ingredientes: {pizza.ingredients.join(', ')}</p>
               <div className="cart-item-actions">
                 <button onClick={() => decreaseQuantity(pizza.id)} className="decrease-button">-</button>
-                <span>{pizza.quantity}</span>
-                <button onClick={() => increaseQuantity(pizza.id)} className="increase-button">+</button>
+                <span>{pizza.quantity || 1}</span>
+                <button onClick={() => increaseQuantity(pizza)} className="increase-button">+</button>
               </div>
             </div>
           </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../main.css';
 
-const Cardpizza = ({ name, price, ingredients, img, desc }) => {
+const Cardpizza = ({ name, price, ingredients, img, desc, addToCart }) => {
   return (
     <div className="pizza">
       <div className="card">
@@ -18,6 +18,12 @@ const Cardpizza = ({ name, price, ingredients, img, desc }) => {
         </ul>
         <hr />
         <p className="price fs-4 fw-bold">Precio: ${price.toLocaleString()}</p>
+        <button
+          className="btn btn-light"
+          onClick={addToCart}
+        >
+          Añadir al carrito
+        </button>
       </div>
     </div>
   );
@@ -29,6 +35,7 @@ Cardpizza.propTypes = {
   ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
   img: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 export default Cardpizza;

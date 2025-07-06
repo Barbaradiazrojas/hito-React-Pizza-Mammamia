@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import Header from '../pages/Header';
-import Cardpizza from '../pages/Cardpizza';
+// src/pages/Home.jsx
+import React, { useState, useEffect, useContext } from 'react';
+import Header from './Header';
+import Cardpizza from './Cardpizza';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { CartContext } from '../components/CartContext';
 
 const Home = () => {
   const [pizzas, setPizzas] = useState([]);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     const fetchPizzas = async () => {
@@ -19,7 +22,6 @@ const Home = () => {
         console.error('Error fetching data: ', error);
       }
     };
-
     fetchPizzas();
   }, []);
 
@@ -36,6 +38,7 @@ const Home = () => {
                 ingredients={pizza.ingredients}
                 img={pizza.img}
                 desc={pizza.desc}
+                addToCart={() => addToCart(pizza)}
               />
             </div>
           ))}
